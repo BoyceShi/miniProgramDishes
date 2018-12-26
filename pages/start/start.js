@@ -7,7 +7,7 @@ Page({
         angle: 0,
         userInfo: null
     },
-    
+
     // goToIndex: function() {
     //     wx.switchTab({
     //         url: '/pages/index/index',
