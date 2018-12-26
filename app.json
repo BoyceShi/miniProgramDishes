@@ -1,11 +1,26 @@
 {
     "pages": [
-        "pages/start/start"
+        "pages/start/start",
+        "pages/index",
+        "pages/index/index",
+        "pages/user/user"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "孚哥哥的私房菜",
         "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "菜谱"
+            },
+            {
+                "pagePath": "pages/user/user",
+                "text": "我的"
+            }
+        ]
     }
 }

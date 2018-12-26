@@ -13,7 +13,7 @@
             </view>
             <view class="bd">
                 <image class="smalltitle" src="/images/more/srartWord.png"></image>
-                <view wx:if="{{userInfo}}" class="confirm-btn">
+                <view wx:if="{{userInfo}}" class="confirm-btn" bindtap="jumpToIndex">
                     <text>开启烹饪之旅</text>
                 </view>
                 <view wx:if="{{!userInfo}}">

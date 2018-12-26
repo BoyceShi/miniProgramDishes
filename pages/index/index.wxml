@@ -1,0 +1,11 @@
+<van-cell-group>
+    <block wx:for="{{menuList}}">
+        <van-cell icon="{{item.img}}" size="large">
+            <van-row>
+                <van-col>麻辣香锅</van-col>
+                <van-col>辣椒、里脊、莴笋</van-col>
+                <van-col>上次烹饪时间：2018-12-26</van-col>
+            </van-row>
+        </van-cell>
+    </block>
+</van-cell-group>

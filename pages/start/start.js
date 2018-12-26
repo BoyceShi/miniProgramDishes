@@ -8,11 +8,14 @@ Page({
         userInfo: null
     },
 
-    // goToIndex: function() {
-    //     wx.switchTab({
-    //         url: '/pages/index/index',
-    //     });
-    // },
+    /**
+     * 跳转至主页
+     */
+    jumpToIndex: function() {
+        wx.switchTab({
+            url: '/pages/index/index',
+        });
+    },
 
     /**
      * 获取微信信息

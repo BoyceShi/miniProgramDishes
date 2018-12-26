@@ -2,11 +2,12 @@ var HttpRequest = require('HttpRequestUtils.js');
 import config from './config'
 
 class HttpService {
-    
+
     constructor() {
         this.$path = {
             code2Session: 'wx/code2Session',
-            updateWxUserInfo:'wx/updateWxUserInfo'
+            updateWxUserInfo: 'wx/updateWxUserInfo',
+            getMenuList: '/menu'
         }
     }
 
@@ -15,10 +16,15 @@ class HttpService {
         HttpRequest.GET(this.$path.code2Session + "/" + config.appId + "/" + config.appSecret + "/" + code, null, response)
     }
 
-    //user
-    updateWxUserInfo(user, response){
+    //更新用户信息
+    updateWxUserInfo(user, response) {
         user.wxOpenId = getApp().globalData.openId
         HttpRequest.PUT(this.$path.updateWxUserInfo, user, response)
+    }
+
+    //获取菜谱列表
+    getMenuList(pageNo, response) {
+        HttpRequest.GET(this.$path.getMenuList + "?pageNo=" + pageNo, null, response)
     }
 }
 
