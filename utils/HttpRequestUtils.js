@@ -42,7 +42,7 @@ function DELETE(path, params, response) {
  */
 function toStartPage(){
     wx.reLaunch({
-        url: '/pages/index/index'
+        url: '/pages/start/start'
     })
 }
 
