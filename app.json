@@ -1,0 +1,11 @@
+{
+    "pages": [
+        "pages/start/start"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "孚哥哥的私房菜",
+        "navigationBarTextStyle": "black"
+    }
+}
