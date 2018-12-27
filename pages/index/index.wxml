@@ -1,11 +1,8 @@
 <van-cell-group>
-    <block wx:for="{{menuList}}">
-        <van-cell icon="{{item.img}}" size="large">
-            <van-row>
-                <van-col>麻辣香锅</van-col>
-                <van-col>辣椒、里脊、莴笋</van-col>
-                <van-col>上次烹饪时间：2018-12-26</van-col>
-            </van-row>
-        </van-cell>
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
+        <view slot="action" bind:tap="onSearch">搜索</view>
+    </van-search>
+    <block wx:for="{{menuList}}" class="info_block">
+        <van-card price="上次烹饪时间：{{item.recentTime}}" currency="" centered="true"  desc="{{item.detailString}}" title="{{item.name}}" thumb="{{ item. img}}" />
     </block>
 </van-cell-group>

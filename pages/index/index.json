@@ -1,8 +1,6 @@
 {
     "usingComponents": {
-        "van-cell": "/vant-weapp/dist/cell/index",
-        "van-cell-group": "/vant-weapp/dist/cell-group/index",
-        "van-row": "/vant-weapp/dist/row/index",
-        "van-col": "/vant-weapp/dist/col/index"
+        "van-search": "/vant-weapp/dist/search/index",
+        "van-card": "/vant-weapp/dist/card/index"
     }
 }

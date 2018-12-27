@@ -15,7 +15,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        this.HttpRequestService.getMenuList(1, {
+        this.HttpRequestService.getMenuList(1, "", {
             success: (data, msg) => {
                 this.setData({
                     menuList:data
@@ -49,6 +49,10 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function() {
+
+    },
+
+    onSearch: function(event) {
 
     }
 })

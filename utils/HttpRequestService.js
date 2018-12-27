@@ -23,8 +23,8 @@ class HttpService {
     }
 
     //获取菜谱列表
-    getMenuList(pageNo, response) {
-        HttpRequest.GET(this.$path.getMenuList + "?pageNo=" + pageNo, null, response)
+    getMenuList(pageNo, keyWord, response) {
+        HttpRequest.GET(this.$path.getMenuList + "?pageNo=" + pageNo + "&keyWord=" + keyWord, null, response)
     }
 }
 
