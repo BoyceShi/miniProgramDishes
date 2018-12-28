@@ -1,11 +1,5 @@
 {
-    "usingComponents": {
-        "van-search": "/vant-weapp/dist/search/index",
-        "van-cell": "/vant-weapp/dist/cell/index",
-        "van-cell-group": "/vant-weapp/dist/cell-group/index",
-        "van-row": "/vant-weapp/dist/row/index",
-        "van-col": "/vant-weapp/dist/col/index"
-    },
     "enablePullDownRefresh": true,
-    "backgroundTextStyle":"dark"
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "菜谱"
 }

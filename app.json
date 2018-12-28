@@ -1,8 +1,18 @@
 {
+    "usingComponents": {
+        "van-search": "/vant-weapp/dist/search/index",
+        "van-cell": "/vant-weapp/dist/cell/index",
+        "van-cell-group": "/vant-weapp/dist/cell-group/index",
+        "van-row": "/vant-weapp/dist/row/index",
+        "van-col": "/vant-weapp/dist/col/index",
+        "van-loading": "/vant-weapp/dist/loading/index",
+        "van-field": "/vant-weapp/dist/field/index"
+    },
     "pages": [
         "pages/start/start",
         "pages/index/index",
-        "pages/user/user"
+        "pages/user/user",
+        "pages/nickNameSet/nick_name_set"
     ],
     "window": {
         "backgroundTextStyle": "light",

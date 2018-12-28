@@ -1,2 +1,9 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="avatarView">
+    <image class="avatarUrl" src="{{userInfo.avatarUrl}}" mode="aspectFit" />
+</view>
+<van-cell-group class="info">
+    <van-cell title="昵称" value="{{userInfo.nickName}}" is-link url="../nickNameSet/nick_name_set" />
+    <van-cell title="性别" value="{{userInfo.genderChinese}}" is-link />
+    <van-cell title="生日" value="{{userInfo.birthday}}" is-link />
+    <van-cell title="个性签名" value="{{userInfo.personalSignature}}" is-link />
+</van-cell-group>

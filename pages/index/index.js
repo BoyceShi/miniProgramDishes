@@ -11,7 +11,8 @@ Page({
         },
         pageNo: 1,
         keyWord: '',
-        isBottom: false
+        isBottom: false,
+        loading: false
     },
 
     /**
@@ -21,10 +22,14 @@ Page({
         this.searchMenuList({
             success: (data, msg) => {
                 this.setData({
-                    menuList: data
+                    menuList: data,
+                    loading: false
                 })
             },
             fail: (code, msg) => {
+                this.setData({
+                    loading: false
+                })
                 wx.showToast({
                     title: msg,
                     icon: 'none',
@@ -38,22 +43,28 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function() {
-        this.data.pageNo = 1;
-        this.data.isBottom = false;
+        this.setData({
+            pageNo: 1,
+            isBottom: false
+        })
         this.searchMenuList({
             success: (data, msg) => {
                 this.setData({
-                    menuList: data
+                    menuList: data,
+                    loading: false
                 })
-                wx.stopPullDownRefresh()
+                wx.stopPullDownRefresh();
             },
             fail: (code, msg) => {
+                this.setData({
+                    loading: false
+                })
                 wx.showToast({
                     title: msg,
                     icon: 'none',
                     duration: 2000
                 })
-                wx.stopPullDownRefresh()
+                wx.stopPullDownRefresh();
             }
         })
     },
@@ -63,18 +74,28 @@ Page({
      */
     onReachBottom: function() {
         if (!this.data.isBottom) {
-            this.data.pageNo++;
+            this.setData({
+                pageNo: ++this.data.pageNo
+            })
             this.searchMenuList({
                 success: (data, msg) => {
+                    this.setData({
+                        loading: false
+                    })
                     if (data.length > 0) {
                         this.setData({
                             menuList: this.data.menuList.concat(data)
                         })
                     } else {
-                        this.data.isBottom = true;
+                        this.setData({
+                            isBottom: true
+                        })
                     }
                 },
                 fail: (code, msg) => {
+                    this.setData({
+                        loading: false
+                    })
                     wx.showToast({
                         title: msg,
                         icon: 'none',
@@ -96,35 +117,38 @@ Page({
      * 搜索
      */
     onSearch: function(event) {
-        this.data.keyWord = event.detail;
-        this.data.pageNo = 1;
-        this.data.isBottom = false;
+        this.setData({
+            keyWord: event.detail,
+            pageNo: 1,
+            isBottom: false
+        })
         this.searchMenuList({
             success: (data, msg) => {
                 this.setData({
-                    menuList: data
+                    menuList: data,
+                    loading: false
                 })
-                wx.stopPullDownRefresh()
             },
             fail: (code, msg) => {
+                this.setData({
+                    loading: false
+                })
                 wx.showToast({
                     title: msg,
                     icon: 'none',
                     duration: 2000
                 })
-                wx.stopPullDownRefresh()
             }
         });
-    },
-
-    onCancel(event) {
-        this.data.keyWord = '';
     },
 
     /**
      * 初始化页面数据
      */
     searchMenuList(response) {
+        this.setData({
+            loading: true
+        })
         this.HttpRequestService.getMenuList(this.data.pageNo, this.data.keyWord, response);
     }
 })

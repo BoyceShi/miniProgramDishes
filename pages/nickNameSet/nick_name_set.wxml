@@ -1,0 +1,3 @@
+<van-cell-group>
+    <van-field value="{{ nickName }}" placeholder="请输入用户名" border="{{ false }}" clearable maxlength="{{50}}" adjust-position="{{false}}" bind:confirm="updateNickName" />
+</van-cell-group>

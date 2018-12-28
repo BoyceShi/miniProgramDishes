@@ -1,1 +1,13 @@
-/* pages/user/user.wxss */
+.avatarView {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+
+.avatarUrl {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 50px;
+}

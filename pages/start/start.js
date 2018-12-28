@@ -50,7 +50,7 @@ Page({
         if (!e.detail.userInfo) {
             return;
         }
-        wx.setStorageSync('userInfo', e.detail.userInfo)
+        wx.setStorageSync('wxUserInfo', e.detail.userInfo)
         this.HttpRequestService.updateWxUserInfo(e.detail.userInfo, {
             success: (data, msg) => {
                 getApp().globalData.token = data
@@ -92,7 +92,7 @@ Page({
 
     onShow: function() {
         let that = this
-        let userInfo = wx.getStorageSync('userInfo')
+        let userInfo = wx.getStorageSync('wxUserInfo')
         if (userInfo) {
             that.setData({
                 userInfo: userInfo

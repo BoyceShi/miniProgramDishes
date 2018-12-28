@@ -1,5 +1,6 @@
 <van-search placeholder="请输入搜索关键词" bind:search="onSearch" bind:cancel="onCancel" />
-<van-cell-group>
+<view class="emptyTip" wx:if="{{menuList.length<=0}}">菜谱走丢啦。。。</view>
+<van-cell-group wx:if="{{menuList.length>0}}">
     <block wx:key="menu" wx:for="{{menuList}}">
         <van-cell is-link="true" center="true">
             <view>
@@ -13,3 +14,4 @@
         </van-cell>
     </block>
 </van-cell-group>
+<van-loading type="spinner" class="loading" wx:if="{{loading}}" />
