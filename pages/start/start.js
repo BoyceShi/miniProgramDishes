@@ -11,10 +11,36 @@ Page({
     /**
      * 跳转至主页
      */
-    jumpToIndex: function() {
-        wx.switchTab({
-            url: '/pages/index/index',
-        });
+    startCook: function() {
+        if (!getApp().globalData.token) {
+            wx.login({
+                success: res => {
+                    // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                    this.HttpRequestService.code2Session(res.code, {
+                        success: (data, msg) => {
+                            if (data.token) {
+                                getApp().globalData.token = data.token
+                            }
+                            getApp().globalData.openId = data.openId
+                            wx.switchTab({
+                                url: '/pages/index/index',
+                            });
+                        },
+                        fail: (code, msg) => {
+                            wx.showToast({
+                                title: msg,
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
+                    })
+                }
+            })
+        } else {
+            wx.switchTab({
+                url: '/pages/index/index',
+            });
+        }
     },
 
     /**

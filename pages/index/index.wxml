@@ -1,8 +1,15 @@
+<van-search placeholder="请输入搜索关键词" bind:search="onSearch" bind:cancel="onCancel" />
 <van-cell-group>
-    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
-        <view slot="action" bind:tap="onSearch">搜索</view>
-    </van-search>
-    <block wx:for="{{menuList}}" class="info_block">
-        <van-card price="上次烹饪时间：{{item.recentTime}}" currency="" centered="true"  desc="{{item.detailString}}" title="{{item.name}}" thumb="{{ item. img}}" />
+    <block wx:key="menu" wx:for="{{menuList}}">
+        <van-cell is-link="true" center="true">
+            <view>
+                <span class="title">{{item.name}}</span>
+                <span class="discription">{{item.detailString}}</span>
+                <span class="discription">上次烹饪时间：{{item.recentTime}}</span>
+            </view>
+            <view slot="icon">
+                <image class="cellImg" src="{{item.img}}"></image>
+            </view>
+        </van-cell>
     </block>
 </van-cell-group>

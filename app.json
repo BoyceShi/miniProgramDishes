@@ -1,7 +1,6 @@
 {
     "pages": [
         "pages/start/start",
-        "pages/index",
         "pages/index/index",
         "pages/user/user"
     ],
@@ -12,14 +11,19 @@
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
+        "selectedColor": "#000",
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "text": "菜谱"
+                "text": "菜谱",
+                "iconPath": "images/dish_tab_bar.png",
+                "selectedIconPath": "images/dish_tab_bar.png"
             },
             {
                 "pagePath": "pages/user/user",
-                "text": "我的"
+                "text": "我的",
+                "iconPath": "images/mine_tab_bar.png",
+                "selectedIconPath": "images/mine_tab_bar.png"
             }
         ]
     }
