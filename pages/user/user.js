@@ -3,7 +3,9 @@ import HttpRequestService from '../../utils/HttpRequestService.js'
 Page({
     HttpRequestService: new HttpRequestService,
     data: {
-        userInfo: {}
+        userInfo: {},
+        showSexPopup: false,
+        sexColums: ["未知", "男", "女"]
     },
 
     /**
@@ -38,12 +40,40 @@ Page({
         })
     },
 
- /**
+    /**
      * 生命周期函数--监听页面显示
      */
-    onShow:function(){
+    onShow: function() {
         this.setData({
             userInfo: wx.getStorageSync('userInfo')
+        })
+    },
+    /**
+     * 显示性别选择弹层
+     */
+    showSexPopup(event) {
+        this.setData({
+            showSexPopup: true
+        })
+    },
+    /**
+     * 性别选择Picker取消
+     */
+    cancelSexPick(picker) {
+        this.closeSexPopup()
+    },
+    /**
+     * 性别选择Picker确认
+     */
+    sexPick(picker) {
+
+    },
+    /**
+     * 点击蒙层
+     */
+    closeSexPopup() {
+        this.setData({
+            showSexPopup: false
         })
     }
 })

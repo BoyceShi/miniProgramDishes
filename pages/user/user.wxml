@@ -3,7 +3,11 @@
 </view>
 <van-cell-group class="info">
     <van-cell title="昵称" value="{{userInfo.nickName}}" is-link url="../nickNameSet/nick_name_set" />
-    <van-cell title="性别" value="{{userInfo.genderChinese}}" is-link />
+    <van-cell title="性别" value="{{userInfo.genderChinese}}" is-link bind:click="showSexPopup" />
     <van-cell title="生日" value="{{userInfo.birthday}}" is-link />
     <van-cell title="个性签名" value="{{userInfo.personalSignature}}" is-link />
 </van-cell-group>
+
+<van-popup show="{{ showSexPopup }}" position="bottom" bind:close="closeSexPopup">
+    <van-picker id="sexPicker" value-key="{{1}}" columns="{{ sexColums }}" show-toolbar bind:cancel="cancelSexPick" bind:confirm="sexPick" />
+</van-popup>

@@ -6,7 +6,9 @@
         "van-row": "/vant-weapp/dist/row/index",
         "van-col": "/vant-weapp/dist/col/index",
         "van-loading": "/vant-weapp/dist/loading/index",
-        "van-field": "/vant-weapp/dist/field/index"
+        "van-field": "/vant-weapp/dist/field/index",
+        "van-popup": "/vant-weapp/dist/popup/index",
+        "van-picker": "/vant-weapp/dist/picker/index"
     },
     "pages": [
         "pages/start/start",
