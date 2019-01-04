@@ -28,7 +28,7 @@ Page({
         userInfo.nickName = nickName
         this.HttpRequestService.updateNickName(nickName, {
             success: (data, msg) => {
-                wx.setStorageSync("userInfo",userInfo)
+                wx.setStorageSync("userInfo", userInfo)
                 wx.showToast({
                     title: msg,
                     icon: 'none',

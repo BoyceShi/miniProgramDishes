@@ -7,9 +7,11 @@ class HttpService {
         this.$path = {
             code2Session: 'wx/code2Session',
             updateWxUserInfo: 'wx/updateWxUserInfo',
-            getMenuList: '/menu',
-            getUser: '/user/get',
-            updateNickName: '/user/updateNickName'
+            getMenuList: 'menu',
+            getUser: 'user/get',
+            updateNickName: 'user/updateNickName',
+            updateGender: 'user/updateGender',
+            updateBirthday: 'user/updateBirthday'
         }
     }
 
@@ -36,7 +38,16 @@ class HttpService {
 
     //更新用户昵称
     updateNickName(nickName, response) {
-        HttpRequest.GET(this.$path.updateNickName + '/' + nickName, null, response)
+        HttpRequest.PUT(this.$path.updateNickName + '/' + nickName, null, response)
+    }
+
+    //更新用户性别
+    updateGender(gender, response) {
+        HttpRequest.PUT(this.$path.updateGender + '/' + gender, null, response)
+    }
+
+    updateBirthday(birthday, response) {
+        HttpRequest.PUT(this.$path.updateBirthday + '/' + birthday, null, response)
     }
 }
 
