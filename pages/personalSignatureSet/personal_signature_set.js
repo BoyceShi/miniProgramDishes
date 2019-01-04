@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nickName: ''
+    personalSignature: ''
   },
 
   /**
@@ -15,19 +15,19 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      nickName: wx.getStorageSync('userInfo').nickName
+      personalSignature: wx.getStorageSync('userInfo').personalSignature
     })
   },
 
   /**
    * 更新用户昵称
    */
-  updateNickName(event) {
-    let nickName = event.detail;
-    this.HttpRequestService.updateNickName(nickName, {
+  updatePersonalSignature(value) {
+    let personalSignature = value.detail;
+    this.HttpRequestService.updatePersonalSignature(personalSignature, {
       success: (data, msg) => {
         let userInfo = wx.getStorageSync('userInfo')
-        userInfo.nickName = nickName
+        userInfo.personalSignature = personalSignature
         wx.setStorageSync("userInfo", userInfo)
         wx.showToast({
           title: msg,

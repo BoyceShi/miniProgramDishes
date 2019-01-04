@@ -1,17 +1,16 @@
 <view class="avatarView">
-    <image class="avatarUrl" src="{{userInfo.avatarUrl}}" mode="aspectFit" />
+  <image class="avatarUrl" src="{{userInfo.avatarUrl}}" mode="aspectFit" />
 </view>
 <van-cell-group class="info">
-    <van-cell title="昵称" value="{{userInfo.nickName}}" url="../nickNameSet/nick_name_set" is-link />
-    <van-cell title="性别" value="{{genderChinese}}" bind:click="showSexPopup" is-link />
-    <van-cell title="生日" value="{{birthdayStr}}" bind:click="showBirthdayPopup" is-link />
-    <van-cell title="个性签名" value="{{userInfo.personalSignature}}" is-link />
+  <van-cell title="昵称" value="{{userInfo.nickName}}" url="../nickNameSet/nick_name_set" is-link />
+  <van-cell title="性别" value="{{genderChinese}}" bind:click="showSexPopup" is-link />
+  <van-cell title="生日" value="{{birthdayStr}}" bind:click="showBirthdayPopup" is-link />
+  <van-cell title="个性签名" value="{{userInfo.personalSignature}}" url="../personalSignatureSet/personal_signature_set" is-link />
 </van-cell-group>
 
 <van-popup show="{{ showSexPopup }}" position="bottom" bind:close="closeSexPopup">
-    <van-picker id="sexPicker" columns="{{ sexColums }}" bind:cancel="cancelSexPick" bind:confirm="sexPick" show-toolbar />
+  <van-picker id="sexPicker" columns="{{ sexColums }}" bind:cancel="cancelSexPick" bind:confirm="sexPick" show-toolbar />
 </van-popup>
-
 <van-popup show="{{ showBirthdayPopup }}" position="bottom" bind:close="closeBirthdayPopup">
-    <van-datetime-picker type="date" min-date="{{minDate}}" max-date="{{maxDate}}" value="{{birthdayDate}}" bind:cancel="cancelBirthdayPick" bind:confirm="brithdayPick" show-toolbar />
+  <van-datetime-picker wx:if="{{showBirthdayPopup}}" type="date" min-date="{{minDate}}" max-date="{{maxDate}}" value="{{birthdayDate}}" bind:cancel="cancelBirthdayPick" bind:confirm="brithdayPick" show-toolbar />
 </van-popup>

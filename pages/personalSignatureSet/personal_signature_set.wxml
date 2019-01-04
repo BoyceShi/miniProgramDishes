@@ -1,0 +1,3 @@
+<van-cell-group>
+  <van-field value="{{ personalSignature }}" placeholder="请输入个性签名" clearable maxlength="{{25}}" adjust-position="{{false}}" bind:confirm="updatePersonalSignature" />
+</van-cell-group>
