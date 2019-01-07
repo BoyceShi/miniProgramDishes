@@ -30,6 +30,7 @@ Page({
           this.setGender(this.data.userInfo.gender)
           //设置生日
           this.setBirthday(this.data.userInfo.birthday)
+          this.setGenderPickerCursor(this.data.userInfo.gender)
         },
         fail: (code, msg) => {
           wx.showToast({
@@ -63,7 +64,9 @@ Page({
    * 页面渲染之后调整性别选择器指针
    */
   onReady() {
-    this.setGenderPickerCursor(this.data.userInfo.gender)
+    if (this.data.userInfo.gender) {
+      this.setGenderPickerCursor(this.data.userInfo.gender)
+    }
   },
   /**
    * 显示性别选择弹层
