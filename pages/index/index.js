@@ -143,7 +143,7 @@ Page({
     },
 
     /**
-     * 初始化页面数据
+     * 菜谱查询
      */
     searchMenuList(response) {
         this.setData({
