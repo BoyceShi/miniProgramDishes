@@ -1,44 +1,45 @@
 {
-  "usingComponents": {
-    "van-search": "/vant-weapp/dist/search/index",
-    "van-cell": "/vant-weapp/dist/cell/index",
-    "van-cell-group": "/vant-weapp/dist/cell-group/index",
-    "van-row": "/vant-weapp/dist/row/index",
-    "van-col": "/vant-weapp/dist/col/index",
-    "van-loading": "/vant-weapp/dist/loading/index",
-    "van-field": "/vant-weapp/dist/field/index",
-    "van-popup": "/vant-weapp/dist/popup/index",
-    "van-picker": "/vant-weapp/dist/picker/index",
-    "van-datetime-picker": "/vant-weapp/dist/datetime-picker/index"
-  },
-  "pages": [
-    "pages/start/start",
-    "pages/index/index",
-    "pages/user/user",
-    "pages/nickNameSet/nick_name_set",
-    "pages/personalSignatureSet/personal_signature_set"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "孚哥哥的私房菜",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "selectedColor": "#000",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "菜谱",
-        "iconPath": "images/dish_tab_bar.png",
-        "selectedIconPath": "images/dish_tab_bar.png"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "我的",
-        "iconPath": "images/mine_tab_bar.png",
-        "selectedIconPath": "images/mine_tab_bar.png"
-      }
-    ]
-  }
+    "usingComponents": {
+        "van-search": "/vant-weapp/dist/search/index",
+        "van-cell": "/vant-weapp/dist/cell/index",
+        "van-cell-group": "/vant-weapp/dist/cell-group/index",
+        "van-row": "/vant-weapp/dist/row/index",
+        "van-col": "/vant-weapp/dist/col/index",
+        "van-loading": "/vant-weapp/dist/loading/index",
+        "van-field": "/vant-weapp/dist/field/index",
+        "van-popup": "/vant-weapp/dist/popup/index",
+        "van-picker": "/vant-weapp/dist/picker/index",
+        "van-datetime-picker": "/vant-weapp/dist/datetime-picker/index"
+    },
+    "pages": [
+        "pages/start/start",
+        "pages/index/index",
+        "pages/user/user",
+        "pages/nickNameSet/nick_name_set",
+        "pages/personalSignatureSet/personal_signature_set",
+        "pages/ingredientsSet/ingredients_set"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "孚哥哥的私房菜",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "selectedColor": "#000",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "菜谱",
+                "iconPath": "images/dish_tab_bar.png",
+                "selectedIconPath": "images/dish_tab_bar.png"
+            },
+            {
+                "pagePath": "pages/user/user",
+                "text": "我的",
+                "iconPath": "images/mine_tab_bar.png",
+                "selectedIconPath": "images/mine_tab_bar.png"
+            }
+        ]
+    }
 }
