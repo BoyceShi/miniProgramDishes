@@ -1,0 +1,46 @@
+.menuImg {
+    width: 100%;
+    height: 350rpx;
+}
+
+.menuName {
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+}
+
+.stepIndex {
+    font-size: 16px;
+    color: grey;
+}
+
+.customStepIndex {
+    padding-top: 5px;
+}
+
+.stepImg {
+    width: 90%;
+    height: 300rpx;
+}
+
+.stepDescription {
+    font-size: 13px;
+    color: #333;
+    line-height: 18px;
+    text-align: left;
+    text-indent: 20px;
+}
+
+.description {
+    margin: 5px 15px 5px 15px;
+}
+
+.cookBtn {
+    width: 80%;
+    text-align: center;
+}
+
+.recentTime {
+    font-size: 13px;
+    color: gainsboro;
+}

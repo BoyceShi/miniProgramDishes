@@ -2,7 +2,7 @@
 <view class="emptyTip" wx:if="{{menuList.length<=0}}">菜谱走丢啦。。。</view>
 <van-cell-group wx:if="{{menuList.length>0}}">
     <block wx:key="menu" wx:for="{{menuList}}">
-        <van-cell is-link="true" center="true">
+        <van-cell is-link center url="../menu/menu?id={{item.id}}">
             <view>
                 <span class="title">{{item.name}}</span>
                 <span class="discription">{{item.detailString}}</span>

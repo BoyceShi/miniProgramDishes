@@ -5,8 +5,7 @@
     <van-cell title="昵称" value="{{userInfo.nickName}}" url="../nickNameSet/nick_name_set" is-link />
     <van-cell title="性别" value="{{genderChinese}}" bind:click="showSexPopup" is-link />
     <van-cell title="生日" value="{{birthdayStr}}" bind:click="showBirthdayPopup" is-link />
-    <van-cell title="个性签名" value="{{userInfo.personalSignature}}" url="../personalSignatureSet/personal_signature_set" is-link />
-    <van-cell title="食材管理" value="创建您的专属食材" url="../ingredientsSet/ingredients_set" is-link />
+    <van-cell title="个性签名" value="{{userInfo.personalSignature}}" url="../personalSignatureSet/personal_signature_set" center is-link />
 </van-cell-group>
 
 <van-popup show="{{ showSexPopup }}" position="bottom" bind:close="closeSexPopup">

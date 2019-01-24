@@ -1,0 +1,29 @@
+<van-row>
+    <image class="menuImg" src="{{menu.img}}"></image>
+</van-row>
+<van-row class="menuName">
+    【{{menu.name}}】
+</van-row>
+<van-row>
+    <van-col offset="13" class="recentTime">上次烹饪时间: {{menu.recentTime}}</van-col>
+</van-row>
+<van-row custom-class="customStepIndex">
+    <van-col>食材清单</van-col>
+</van-row>
+<van-row custom-class="customStepIndex" wx:key="menuDetails" wx:for="{{menu.menuDetails}}" gutter="10">
+    <van-col offset="2">{{item.ingredientName}}</van-col>
+    <van-col offset="1">{{item.num}}</van-col>
+    <van-col>{{item.unit}}</van-col>
+</van-row>
+<van-row custom-class="customStepIndex">
+    <van-col>烹饪步骤</van-col>
+</van-row>
+<van-row style="display: table;vertical-align: middle;text-align: center;" wx:key="steps" wx:for="{{menu.steps}}" gutter="10">
+    <van-col offset="1" custom-class="customStepIndex" class="stepIndex">步骤{{index + 1}}/{{menu.steps.length}}</van-col>
+    <image class="stepImg" src="{{item.img}}"></image>
+    <van-col class="stepDescription" custom-class="description">
+        {{item.description}}
+    </van-col>
+</van-row>
+<button type="primary" class="cookBtn" bindtap='startCook'>开始烹饪</button>
+<van-dialog id="van-dialog" />
