@@ -2,9 +2,6 @@ import HttpRequestService from '../../utils/HttpRequestService.js'
 
 Page({
     HttpRequestService: new HttpRequestService,
-    /**
-     * 页面的初始数据
-     */
     data: {
         menuList: function() {
             return []
@@ -14,10 +11,6 @@ Page({
         isBottom: false,
         loading: false
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function(options) {
         this.searchMenuList({
             success: (data, msg) => {
@@ -38,10 +31,6 @@ Page({
             }
         })
     },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
     onPullDownRefresh: function() {
         this.setData({
             pageNo: 1,
@@ -68,10 +57,6 @@ Page({
             }
         })
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
     onReachBottom: function() {
         if (!this.data.isBottom) {
             this.setData({
@@ -105,10 +90,6 @@ Page({
             })
         }
     },
-
-    /**
-     * 用户点击右上角分享
-     */
     onShareAppMessage: function() {
 
     },
@@ -150,5 +131,13 @@ Page({
             loading: true
         })
         this.HttpRequestService.getMenuList(this.data.pageNo, this.data.keyWord, response);
+    },
+    /**
+     * 新增菜谱
+     */
+    addMenu() {
+        wx.navigateTo({
+            url: "/pages/menu/menuAdd/menuAdd"
+        })
     }
 })

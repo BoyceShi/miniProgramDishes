@@ -1,4 +1,6 @@
-<van-search placeholder="请输入搜索关键词" bind:search="onSearch" bind:cancel="onCancel" />
+<van-search placeholder="请输入搜索关键词" bind:search="onSearch" bind:cancel="onCancel" use-action-slot>
+    <van-icon custom-style="padding-top:.5rem;" size="2em" slot="action" name="add-o" bind:click="addMenu" />
+</van-search>
 <view class="emptyTip" wx:if="{{menuList.length<=0}}">菜谱走丢啦。。。</view>
 <van-cell-group wx:if="{{menuList.length>0}}">
     <block wx:key="menu" wx:for="{{menuList}}">
@@ -6,7 +8,7 @@
             <view>
                 <span class="title">{{item.name}}</span>
                 <span class="discription">{{item.detailString}}</span>
-                <span class="discription">上次烹饪时间：{{item.recentTime}}</span>
+                <span wx:if="{{item.recentTime}}" class="discription">上次烹饪时间：{{item.recentTime}}</span>
             </view>
             <view slot="icon">
                 <image class="cellImg" src="{{item.img}}"></image>

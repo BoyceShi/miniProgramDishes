@@ -1,0 +1,17 @@
+<van-button plain type="primary" bindtap="uploadImg" style="padding-left:130px;">上传菜谱图片</van-button>
+<van-field label="菜谱" placeholder="请输入菜谱名称" value="{{ menu.name }}" required />
+<van-field label="食材" required disabled icon="add-o" bind:click-icon="pushDetail" />
+<view style="display:flex;" wx:key="menuDetails" wx:for="{{menu.menuDetails}}">
+    <van-field style="flex:2;" placeholder="食材{{index + 1}}" value="{{item.ingredientName}}" />
+    <van-field type="number" style="flex:1;" placeholder="数量" value="{{item.num}}" />
+    <van-field wx-if="{{menu.menuDetails.length > 1}}" style="flex:1;" placeholder="单位" icon="close" bind:click-icon="removeDetail" data-index="{{index}}" value="{{item.unit}}" />
+    <van-field wx-if="{{menu.menuDetails.length == 1}}" style="flex:1;" placeholder="单位" data-index="{{index}}" value="{{item.unit}}" />
+</view>
+<van-field label="步骤" required disabled icon="add-o" bind:click-icon="pushStep" />
+<view wx:key="menuSteps" wx:for="{{menu.steps}}" style="display:inline;">
+    <van-field placeholder="步骤{{index + 1}}" />
+    <van-button plain type="primary" bindtap="uploadImg" style="padding-left:130px;">上传步骤{{index + 1}}图片</van-button>
+</view>
+<view style="padding-top:30rpx;">
+    <van-button size="large" round type="primary" plain bind:click="confirm">保存</van-button>
+</view>

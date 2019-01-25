@@ -10,7 +10,9 @@
         "van-popup": "/vant-weapp/dist/popup/index",
         "van-picker": "/vant-weapp/dist/picker/index",
         "van-datetime-picker": "/vant-weapp/dist/datetime-picker/index",
-        "van-dialog": "/vant-weapp/dist/dialog/index"
+        "van-dialog": "/vant-weapp/dist/dialog/index",
+        "van-icon": "/vant-weapp/dist/icon/index",
+        "van-button": "/vant-weapp/dist/button/index"
     },
     "pages": [
         "pages/start/start",
@@ -18,7 +20,8 @@
         "pages/user/user",
         "pages/nickNameSet/nick_name_set",
         "pages/personalSignatureSet/personal_signature_set",
-        "pages/menu/menu"
+        "pages/menu/menu",
+        "pages/menu/menuAdd/menuAdd"
     ],
     "window": {
         "backgroundTextStyle": "light",

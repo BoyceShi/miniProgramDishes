@@ -19,8 +19,11 @@
 }
 
 .stepImg {
-    width: 90%;
-    height: 300rpx;
+    height: 350rpx;
+    display: block;
+    text-align: center;
+    padding-left: 32px;
+    width: 650rpx;
 }
 
 .stepDescription {
@@ -28,16 +31,10 @@
     color: #333;
     line-height: 18px;
     text-align: left;
-    text-indent: 20px;
 }
 
 .description {
     margin: 5px 15px 5px 15px;
-}
-
-.cookBtn {
-    width: 80%;
-    text-align: center;
 }
 
 .recentTime {
