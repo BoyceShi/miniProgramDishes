@@ -44,6 +44,18 @@ Page({
             menu: menuCopy
         })
     },
+
+    /**
+     * 删除步骤
+     */
+    removeStep(event) {
+        let menuCopy = this.data.menu;
+        let index = event.currentTarget.dataset['index'];
+        menuCopy.steps.splice(index, 1)
+        this.setData({
+            menu: menuCopy
+        })
+    },
     /**
      * 新增步骤
      */
@@ -89,5 +101,62 @@ Page({
      */
     confirm() {
         console.info(this.data.menu)
+    },
+
+    /**
+     * 修改菜谱名称
+     */
+    changeMenuName(event) {
+        this.setData({
+            'menu.name': event.detail
+        })
+    },
+
+    /**
+     * 修改食材名称
+     */
+    changeIngredientName(event) {
+        let index = event.currentTarget.dataset['index'];
+        let menuCopy = this.data.menu;
+        menuCopy.menuDetails[index].ingredientName = event.detail;
+        this.setData({
+            menu: menuCopy
+        })
+    },
+
+    /**
+     * 修改食材数量
+     */
+    changeIngredientNum(event) {
+        let index = event.currentTarget.dataset['index'];
+        let menuCopy = this.data.menu;
+        menuCopy.menuDetails[index].num = event.detail;
+        this.setData({
+            menu: menuCopy
+        })
+    },
+
+    /**
+     * 修改食材单位
+     */
+    changeIngredientUnit(event) {
+        let index = event.currentTarget.dataset['index'];
+        let menuCopy = this.data.menu;
+        menuCopy.menuDetails[index].unit = event.detail;
+        this.setData({
+            menu: menuCopy
+        })
+    },
+
+    /**
+     * 修改步骤描述
+     */
+    changeSteps(event) {
+        let index = event.currentTarget.dataset['index'];
+        let menuCopy = this.data.menu;
+        menuCopy.steps[index].description = event.detail;
+        this.setData({
+            menu: menuCopy
+        })
     }
 })
