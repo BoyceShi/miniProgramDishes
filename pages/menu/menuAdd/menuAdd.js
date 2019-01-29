@@ -1,4 +1,7 @@
+import config from '../../../utils/config'
+import HttpRequestService from '../../../utils/HttpRequestService.js'
 Page({
+    HttpRequestService: new HttpRequestService,
     data: {
         menu: {
             name: '',
@@ -7,17 +10,16 @@ Page({
             type: '',
             remark: '',
             img: ''
-        }
+        },
+        mainImg: '',
+        stepImg: [],
+        mainLoading: false,
+        saveLoading: false,
+        stepImgLoading: null
     },
     onLoad: function(options) {
         this.pushDetail();
         this.pushStep();
-    },
-    onReady: function() {
-
-    },
-    onShow: function() {
-
     },
     /**
      * 新增食材
@@ -51,10 +53,15 @@ Page({
     removeStep(event) {
         let menuCopy = this.data.menu;
         let index = event.currentTarget.dataset['index'];
-        menuCopy.steps.splice(index, 1)
+        menuCopy.steps.splice(index, 1);
         this.setData({
             menu: menuCopy
-        })
+        });
+        let stepImgCopy = this.data.stepImg;
+        stepImgCopy.splice(index, 1);
+        this.setData({
+            stepImg: stepImgCopy
+        });
     },
     /**
      * 新增步骤
@@ -74,33 +81,76 @@ Page({
     /**
      * 上传图片
      */
-    uploadImg() {
-        // wx.chooseImage({
-        //     count: 1,
-        //     sizeType: ['original', 'compressed'],
-        //     sourceType: ['album', 'camera'],
-        //     success(res) {
-        //         const tempFilePaths = res.tempFilePaths
-        //         wx.uploadFile({
-        //             url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-        //             filePath: tempFilePaths[0],
-        //             name: 'file',
-        //             formData: {
-        //                 user: 'test'
-        //             },
-        //             success(res) {
-        //                 const data = res.data
-        //                 // do something
-        //             }
-        //         })
-        //     }
-        // })
+    uploadImg(event) {
+        let type = event.currentTarget.dataset.type;
+        let index = event.currentTarget.dataset.index;
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['compressed'],
+            sourceType: ['album', 'camera'],
+            success: (res) => {
+                const tempFilePaths = res.tempFilePaths
+                this.loading(type, index)
+                wx.uploadFile({
+                    url: config.basePath + 'oss/upload',
+                    filePath: tempFilePaths[0],
+                    name: 'file',
+                    formData: {
+                        type: type
+                    },
+                    success: (res) => {
+                        const data = JSON.parse(res.data);
+                        if (data.code === "10000") {
+                            const img = data.data
+                            switch (type) {
+                                case "main":
+                                    this.setData({
+                                        'menu.img': img
+                                    });
+                                    break;
+                                case "step":
+                                    let menuCopy = this.data.menu;
+                                    menuCopy.steps[index].img = img;
+                                    this.setData({
+                                        menu: menuCopy
+                                    });
+                                    break;
+                            }
+                            this.refreshImg(img, type, index)
+                        }
+                    },
+                    complete: () => {
+                        this.unLoading();
+                    }
+                })
+            }
+        })
     },
     /**
      * 提交菜谱
      */
     confirm() {
-        console.info(this.data.menu)
+        this.setData({
+            saveLoading: true
+        });
+        this.HttpRequestService.saveMenu(this.data.menu, {
+            success: (data, msg) => {
+
+            },
+            fail: (code, msg) => {
+                wx.showToast({
+                    title: msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+            },
+            complete: () => {
+                this.setData({
+                    saveLoading: false
+                });
+            }
+        })
+
     },
 
     /**
@@ -157,6 +207,74 @@ Page({
         menuCopy.steps[index].description = event.detail;
         this.setData({
             menu: menuCopy
+        })
+    },
+    /**
+     * 修改备注
+     */
+    changeRemark(event) {
+        this.setData({
+            'menu.remark': event.detail
+        })
+    },
+    /**
+     * 刷新页面图片
+     */
+    refreshImg(img, type, index) {
+        this.loading(type, index)
+        this.HttpRequestService.getOssImg(img, {
+            success: (data, msg) => {
+                switch (type) {
+                    case 'main':
+                        this.setData({
+                            mainImg: data
+                        });
+                        break;
+                    case 'step':
+                        let stepImgCopy = this.data.stepImg;
+                        stepImgCopy[index] = data
+                        this.setData({
+                            stepImg: stepImgCopy
+                        })
+                        break;
+                }
+            },
+            fail: (code, msg) => {
+                wx.showToast({
+                    title: msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+            },
+            complete: () => {
+                this.unLoading()
+            }
+        })
+    },
+    /**
+     * 加载按钮
+     */
+    loading(type, index) {
+        switch (type) {
+            case "main":
+                this.setData({
+                    mainLoading: true
+                })
+                break;
+            case "step":
+                this.setData({
+                    stepImgLoading: index
+                })
+                break;
+        }
+    },
+    /**
+     * 取消加载
+     */
+    unLoading() {
+        this.setData({
+            mainLoading: false,
+            stepImgLoading: null
         })
     }
 })

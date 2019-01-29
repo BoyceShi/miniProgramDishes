@@ -15,18 +15,19 @@ Page({
         this.searchMenuList({
             success: (data, msg) => {
                 this.setData({
-                    menuList: data,
-                    loading: false
+                    menuList: data
                 })
             },
             fail: (code, msg) => {
-                this.setData({
-                    loading: false
-                })
                 wx.showToast({
                     title: msg,
                     icon: 'none',
                     duration: 2000
+                })
+            },
+            complete: () => {
+                this.setData({
+                    loading: false
                 })
             }
         })
@@ -39,21 +40,22 @@ Page({
         this.searchMenuList({
             success: (data, msg) => {
                 this.setData({
-                    menuList: data,
-                    loading: false
+                    menuList: data
                 })
                 wx.stopPullDownRefresh();
             },
             fail: (code, msg) => {
-                this.setData({
-                    loading: false
-                })
                 wx.showToast({
                     title: msg,
                     icon: 'none',
                     duration: 2000
                 })
                 wx.stopPullDownRefresh();
+            },
+            complete: () => {
+                this.setData({
+                    loading: false
+                })
             }
         })
     },
@@ -64,9 +66,6 @@ Page({
             })
             this.searchMenuList({
                 success: (data, msg) => {
-                    this.setData({
-                        loading: false
-                    })
                     if (data.length > 0) {
                         this.setData({
                             menuList: this.data.menuList.concat(data)
@@ -78,13 +77,15 @@ Page({
                     }
                 },
                 fail: (code, msg) => {
-                    this.setData({
-                        loading: false
-                    })
                     wx.showToast({
                         title: msg,
                         icon: 'none',
                         duration: 2000
+                    })
+                },
+                complete: () => {
+                    this.setData({
+                        loading: false
                     })
                 }
             })
@@ -106,18 +107,19 @@ Page({
         this.searchMenuList({
             success: (data, msg) => {
                 this.setData({
-                    menuList: data,
-                    loading: false
+                    menuList: data
                 })
             },
             fail: (code, msg) => {
-                this.setData({
-                    loading: false
-                })
                 wx.showToast({
                     title: msg,
                     icon: 'none',
                     duration: 2000
+                })
+            },
+            complete: () => {
+                this.setData({
+                    loading: false
                 })
             }
         });

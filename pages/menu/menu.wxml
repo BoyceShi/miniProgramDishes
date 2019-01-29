@@ -7,23 +7,30 @@
 <van-row>
     <van-col wx:if="{{menu.recentTime}}" offset="13" class="recentTime">上次烹饪时间: {{menu.recentTime}}</van-col>
 </van-row>
-<van-row custom-class="customStepIndex">
+<van-row custom-class="rowPaddingTop">
     <van-col>食材清单</van-col>
 </van-row>
-<van-row custom-class="customStepIndex" wx:key="menuDetails" wx:for="{{menu.menuDetails}}" gutter="10">
+<van-row custom-class="rowPaddingTop" wx:key="menuDetails" wx:for="{{menu.menuDetails}}" gutter="10">
     <van-col offset="2">{{item.ingredientName}}</van-col>
     <van-col offset="1">{{item.num}}</van-col>
     <van-col>{{item.unit}}</van-col>
 </van-row>
-<van-row custom-class="customStepIndex">
+<van-row custom-class="rowPaddingTop">
     <van-col>烹饪步骤</van-col>
 </van-row>
 <van-row style="display: table;vertical-align: middle;text-align: center;" wx:key="steps" wx:for="{{menu.steps}}" gutter="10">
-    <van-col offset="1" custom-class="customStepIndex" class="stepIndex">步骤{{index + 1}}/{{menu.steps.length}}</van-col>
+    <van-col offset="1" custom-class="rowPaddingTop" class="stepIndex">步骤{{index + 1}}/{{menu.steps.length}}</van-col>
     <image wx:if="{{item.img}}" class="stepImg" src="{{item.img}}"></image>
     <van-col class="stepDescription" custom-class="description">
         <text space="nbsp">{{item.description}}</text>
     </van-col>
 </van-row>
+<van-row wx:if="{{menu.remark}}" custom-class="rowPaddingTop">
+    <van-col>备注</van-col>
+</van-row>
+<van-row wx:if="{{menu.remark}}" style="display: table;vertical-align: middle;text-align: center;" gutter="10">
+    <van-col class="stepDescription" custom-class="description">
+        <text space="nbsp">{{menu.remark}}</text>
+    </van-col>
+</van-row>
 <van-button size="large" round type="primary" plain bind:click="startCook">开始烹饪</van-button>
-<van-dialog id="van-dialog" />

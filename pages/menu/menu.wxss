@@ -14,7 +14,7 @@
     color: grey;
 }
 
-.customStepIndex {
+.rowPaddingTop {
     padding-top: 5px;
 }
 

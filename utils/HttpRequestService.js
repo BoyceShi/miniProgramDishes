@@ -2,19 +2,18 @@ var HttpRequest = require('HttpRequestUtils.js');
 import config from './config'
 
 class HttpService {
-
     constructor() {
         this.$path = {
             code2Session: 'wx/code2Session',
             updateWxUserInfo: 'wx/updateWxUserInfo',
-            getMenuList: 'menu',
-            getMenu: 'menu',
+            menu: 'menu',
             cook: 'menu/cook',
             getUser: 'user/get',
             updateNickName: 'user/updateNickName',
             updateGender: 'user/updateGender',
             updateBirthday: 'user/updateBirthday',
-            updatePersonalSignature: 'user/updatePersonalSignature'
+            updatePersonalSignature: 'user/updatePersonalSignature',
+            getOssImg: 'getOssImg'
         }
     }
 
@@ -31,7 +30,7 @@ class HttpService {
 
     //获取菜谱列表
     getMenuList(pageNo, keyWord, response) {
-        HttpRequest.GET(this.$path.getMenuList + "?pageNo=" + pageNo + "&keyWord=" + keyWord, null, response)
+        HttpRequest.GET(this.$path.menu + "?pageNo=" + pageNo + "&keyWord=" + keyWord, null, response)
     }
 
     //获取用户信息
@@ -48,21 +47,35 @@ class HttpService {
     updateGender(gender, response) {
         HttpRequest.PUT(this.$path.updateGender + '/' + gender, null, response)
     }
+
     //更新用户生日
     updateBirthday(birthday, response) {
         HttpRequest.PUT(this.$path.updateBirthday + '/' + birthday, null, response)
     }
+
     //更新用户个性签名
     updatePersonalSignature(personalSignature, response) {
         HttpRequest.PUT(this.$path.updatePersonalSignature, personalSignature, response)
     }
+
     //获取菜谱详情
     getMenu(id, response) {
-        HttpRequest.GET(this.$path.getMenu + '/' + id, null, response)
+        HttpRequest.GET(this.$path.menu + '/' + id, null, response)
     }
+
+    //保存菜谱
+    saveMenu(menu, response) {
+        HttpRequest.POST(this.$path.menu, menu, response)
+    }
+
     //开始烹饪
     cook(id, response) {
         HttpRequest.POST(this.$path.cook + '/' + id, null, response)
+    }
+
+    //获取oss图片路径
+    getOssImg(fileName, response) {
+        HttpRequest.GET(this.$path.getOssImg + "/" + fileName, null, response)
     }
 }
 

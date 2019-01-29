@@ -40,7 +40,7 @@ function DELETE(path, params, response) {
 /**
  * 跳转欢迎页
  */
-function toStartPage(){
+function toStartPage() {
     wx.reLaunch({
         url: '/pages/start/start'
     })
@@ -81,6 +81,11 @@ function request(method, path, params, contentType, response) {
         },
         fail: function() {
             toStartPage()
+        },
+        complete: function() {
+            if (response.complete) {
+                response.complete()
+            }
         }
     })
 }
