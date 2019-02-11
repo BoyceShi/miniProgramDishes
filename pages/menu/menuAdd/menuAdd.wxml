@@ -6,7 +6,7 @@
 <view style="display:flex;" wx:key="menuDetails" wx:for="{{menu.menuDetails}}">
     <van-field required style="flex:2;" maxlength="30" placeholder="食材{{index + 1}}" value="{{item.ingredientName}}" bind:change="changeIngredientName" data-index="{{index}}" />
     <van-field required type="number" maxlength="5" style="flex:1;" placeholder="数量" value="{{item.num}}" bind:change="changeIngredientNum" data-index="{{index}}" />
-    <van-field required wx-if="{{menu.menuDetails.length > 1}}" maxlength="5" style="flex:1;" placeholder="单位" icon="close" bind:click-icon="removeDetail" data-index="{{index}}" value="{{item.unit}}" bind:change="changeIngredientUnit" />
+    <van-field required wx-if="{{menu.menuDetails.length > 1}}" maxlength="5" style="flex:1;" placeholder="单位" icon="delete" bind:click-icon="removeDetail" data-index="{{index}}" value="{{item.unit}}" bind:change="changeIngredientUnit" />
     <van-field required wx-if="{{menu.menuDetails.length == 1}}" maxlength="5" style="flex:1;" placeholder="单位" data-index="{{index}}" value="{{item.unit}}" bind:change="changeIngredientUnit" />
 </view>
 <van-field label="步骤" required disabled icon="add-o" bind:click-icon="pushStep" />
@@ -14,7 +14,7 @@
     <van-button wx:if="{{stepImgLoading !== index && !stepImg[index]}}" plain type="primary" bindtap="uploadImg" data-type="step" data-index="{{index}}" style="padding-left:130px;">上传步骤{{index + 1}}图片</van-button>
     <van-loading wx:if="{{stepImgLoading === index}}" style="padding-left:175px;" />
     <image wx:if="{{stepImgLoading !== index && stepImg[index]}}" class="menuImg" src="{{stepImg[index]}}" bindtap="uploadImg" data-type="step" data-index="{{index}}"></image>
-    <van-field type="textarea" wx:if="{{menu.steps.length > 1}}" value="{{item.description}}" required placeholder="步骤{{index + 1}}描述" bind:change="changeSteps" data-index="{{index}}" icon="close" bind:click-icon="removeStep" autosize />
+    <van-field type="textarea" wx:if="{{menu.steps.length > 1}}" value="{{item.description}}" required placeholder="步骤{{index + 1}}描述" bind:change="changeSteps" data-index="{{index}}" icon="delete" bind:click-icon="removeStep" autosize />
     <van-field type="textarea" wx:if="{{menu.steps.length == 1}}" value="{{item.description}}" required placeholder="步骤{{index + 1}}描述" bind:change="changeSteps" data-index="{{index}}" autosize />
 </view>
 <van-field type="textarea" label="备注" maxlength="100" placeholder="请输入备注" value="{{ menu.remark }}" bind:change="changeRemark" autosize/>

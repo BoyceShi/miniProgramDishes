@@ -4,16 +4,17 @@
 <view class="emptyTip" wx:if="{{menuList.length<=0}}">菜谱走丢啦。。。</view>
 <van-cell-group wx:if="{{menuList.length>0}}">
     <block wx:key="menu" wx:for="{{menuList}}">
-        <van-cell is-link center url="../menu/menu?id={{item.id}}">
+        <van-cell is-link center url="../menu/menu?id={{item.id}}" bind:longpress="longpress" bind:touchforcechange="longpress" data-id="{{item.id}}">
             <view>
                 <span class="title">{{item.name}}</span>
                 <span class="discription">{{item.detailString}}</span>
                 <span wx:if="{{item.recentTime}}" class="discription">上次烹饪时间：{{item.recentTime}}</span>
             </view>
             <view slot="icon">
-                <image class="cellImg" src="{{item.img}}"></image>
+                <image class="cellImg" src="{{item.img ? item.img : '../../images/default.jpg'}}"></image>
             </view>
         </van-cell>
     </block>
 </van-cell-group>
 <van-loading type="spinner" class="loading" wx:if="{{loading}}" />
+<van-dialog id="van-dialog" />

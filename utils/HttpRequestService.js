@@ -68,6 +68,11 @@ class HttpService {
         HttpRequest.POST(this.$path.menu, menu, response)
     }
 
+    //删除菜谱
+    deleteMenu(id, response) {
+        HttpRequest.DELETE(this.$path.menu + '/' + id, null, response)
+    }
+
     //开始烹饪
     cook(id, response) {
         HttpRequest.POST(this.$path.cook + '/' + id, null, response)

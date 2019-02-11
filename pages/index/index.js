@@ -1,4 +1,5 @@
 import HttpRequestService from '../../utils/HttpRequestService.js'
+import Dialog from '../../vant-weapp/dist/dialog/dialog';
 
 Page({
     HttpRequestService: new HttpRequestService,
@@ -9,9 +10,18 @@ Page({
         pageNo: 1,
         keyWord: '',
         isBottom: false,
-        loading: false
+        loading: false,
+        showActionSheet: false,
+        actions: [{
+            name: '编辑'
+        }, {
+            name: '删除'
+        }]
     },
-    onLoad: function(options) {
+    onShow: function(options) {
+        this.setData({
+            pageNo: 1
+        })
         this.searchMenuList({
             success: (data, msg) => {
                 this.setData({
@@ -140,6 +150,77 @@ Page({
     addMenu() {
         wx.navigateTo({
             url: "/pages/menu/menuAdd/menuAdd"
+        })
+    },
+    /**
+     * 长按菜谱项
+     */
+    longpress(event) {
+        let that = this;
+        let id = event.currentTarget.dataset['id'];
+        wx.showActionSheet({
+            itemList: ['编辑', '删除'],
+            success(res) {
+                if (res.tapIndex === 0) {
+                    //TODO
+                    //编辑
+                    wx.showToast({
+                        title: "功能逐步完善中，敬请期待",
+                        icon: 'none',
+                        duration: 2000
+                    })
+                } else if (res.tapIndex === 1) {
+                    Dialog.confirm({
+                        title: '提示',
+                        message: '是否要删除该菜谱'
+                    }).then(() => {
+                        that.HttpRequestService.deleteMenu(id, {
+                            success: (data, msg) => {
+                                wx.showToast({
+                                    title: msg,
+                                    icon: 'none',
+                                    duration: 2000
+                                })
+                            },
+                            fail: (code, msg) => {
+                                wx.showToast({
+                                    title: msg,
+                                    icon: 'none',
+                                    duration: 2000
+                                })
+                            },
+                            complete: () => {
+                                that.searchMenuList({
+                                    success: (data, msg) => {
+                                        that.setData({
+                                            menuList: data
+                                        })
+                                    },
+                                    fail: (code, msg) => {
+                                        wx.showToast({
+                                            title: msg,
+                                            icon: 'none',
+                                            duration: 2000
+                                        })
+                                    },
+                                    complete: () => {
+                                        that.setData({
+                                            loading: false
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }).catch(() => {});
+                }
+            },
+            fail(res) {
+                wx.showToast({
+                    title: res.errMsg,
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
         })
     }
 })

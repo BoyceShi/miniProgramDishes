@@ -135,7 +135,18 @@ Page({
         });
         this.HttpRequestService.saveMenu(this.data.menu, {
             success: (data, msg) => {
-
+                wx.showToast({
+                    title: msg,
+                    icon: 'success',
+                    duration: 2000,
+                    success: () => {
+                        setTimeout(function() {
+                            wx.navigateBack({
+                                delta: 1
+                            })
+                        }, 1500)
+                    }
+                })
             },
             fail: (code, msg) => {
                 wx.showToast({
@@ -143,8 +154,6 @@ Page({
                     icon: 'none',
                     duration: 2000
                 })
-            },
-            complete: () => {
                 this.setData({
                     saveLoading: false
                 });

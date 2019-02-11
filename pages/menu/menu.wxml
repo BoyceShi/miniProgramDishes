@@ -1,5 +1,5 @@
 <van-row>
-    <image class="menuImg" src="{{menu.img}}"></image>
+    <image class="menuImg" src="{{menu.img ? menu.img : '../../images/default.jpg'}}"></image>
 </van-row>
 <van-row class="menuName">
     【{{menu.name}}】
@@ -34,3 +34,4 @@
     </van-col>
 </van-row>
 <van-button size="large" round type="primary" plain bind:click="startCook">开始烹饪</van-button>
+<van-dialog id="van-dialog" />
