@@ -213,13 +213,6 @@ Page({
                         })
                     }).catch(() => {});
                 }
-            },
-            fail(res) {
-                wx.showToast({
-                    title: res.errMsg,
-                    icon: 'none',
-                    duration: 2000
-                })
             }
         })
     }

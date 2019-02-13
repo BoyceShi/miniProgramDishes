@@ -4,7 +4,7 @@
 <view class="emptyTip" wx:if="{{menuList.length<=0}}">菜谱走丢啦。。。</view>
 <van-cell-group wx:if="{{menuList.length>0}}">
     <block wx:key="menu" wx:for="{{menuList}}">
-        <van-cell is-link center url="../menu/menu?id={{item.id}}" bind:longpress="longpress" bind:touchforcechange="longpress" data-id="{{item.id}}">
+        <van-cell is-link center url="../menu/menu?id={{item.id}}" bind:longpress="longpress" data-id="{{item.id}}">
             <view>
                 <span class="title">{{item.name}}</span>
                 <span class="discription">{{item.detailString}}</span>
